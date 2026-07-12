@@ -137,22 +137,27 @@ random_forest_model = RandomForestClassifier(
 
 ### Data Preprocessing Pipeline
 
-```
-1. Load Data
-   ↓
-2. Handle Missing Values
-   ├─ Numeric: Median imputation
-   ├─ Categorical: Most frequent value
-   └─ Dates: Convert to ordinal
-   ↓
-3. Feature Engineering
-   ├─ Date conversion to numeric
-   ├─ One-Hot Encoding for categorical
-   └─ Ensure all column names are strings
-   ↓
-4. Feature Scaling (StandardScaler)
-   ↓
-5. Train-Test Split (80-20)
+```mermaid
+graph TD
+    1[1. Load Data] --> 2[2. Handle Missing Values]
+    
+    2 --> 2A[Numeric: Median imputation]
+    2 --> 2B[Categorical: Most frequent value]
+    2 --> 2C[Dates: Convert to ordinal]
+    
+    2A --> 3[3. Feature Engineering]
+    2B --> 3
+    2C --> 3
+    
+    3 --> 3A[Date conversion to numeric]
+    3 --> 3B[One-Hot Encoding for categorical]
+    3 --> 3C[Ensure all column names are strings]
+    
+    3A --> 4[4. Feature Scaling: StandardScaler]
+    3B --> 4
+    3C --> 4
+    
+    4 --> 5[5. Train-Test Split: 80-20]
 ```
 
 ### Isolation Forest Approach
